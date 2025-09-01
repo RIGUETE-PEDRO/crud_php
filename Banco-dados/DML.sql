@@ -1,0 +1,1 @@
+insert into tarefa values(null,'cozinhar',10.00,'2025-02-02',1)
