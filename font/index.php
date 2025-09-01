@@ -18,6 +18,6 @@
         </tbody>
     </table>
     
-    <a href="incluir.php"><button>Incluir Tarefa</button></a>
+    <a href="incluir.php"><button class="inserir">Incluir Tarefa</button></a>
     
 <?php include 'footer.php'?>
