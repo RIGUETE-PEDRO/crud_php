@@ -1,17 +1,9 @@
-
 <?php include 'header.php'?>
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <title>Lista de Tarefas</title>
-   
-</head>
-<body>
-    <h1>Lista de Tarefas</h1>
 
-    <table>
-        <thead>
+    <h1 id="titulo">Lista de Tarefas</h1>
+
+    <table class="table">
+        <thead >
             <tr>
                 <th>Nome da Tarefa</th>
                 <th>Custo (R$)</th>
@@ -20,15 +12,12 @@
             </tr>
         </thead>
         <tbody>
-            <?php
-              
+            <?php 
+              include 'dadosTabela.php'
             ?>
         </tbody>
     </table>
     
     <a href="incluir.php"><button>Incluir Tarefa</button></a>
     
-    <?php include 'footer.php'?>
-
-</body>
-</html>
+<?php include 'footer.php'?>
