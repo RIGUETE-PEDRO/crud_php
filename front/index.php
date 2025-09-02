@@ -11,16 +11,16 @@
             <th class="coluns">Ações</th>
         </tr>
     </thead>
-    <tbody class="tabela-tarefas">
-      
-        <?php
-        include 'dadosTabela.php';
-        ?>
-    </tbody>
+   <tbody class="tabela-tarefas">
+    <?php
+    include 'dadosTabela.php';
+    
+    ?>
+</tbody>
 </table>
 
 <div class="container">
-    <a href="incluir.php"><button class="inserir">Incluir Tarefa</button></a>
+    <a href="incluir.php"><button class="inserir" >Incluir Tarefa</button></a>
 </div>
 
 <div id="confirm-popup-overlay">
