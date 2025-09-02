@@ -11,7 +11,7 @@
                 <th>Ações</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody class="tabela-tarefas">
             <?php 
               include 'dadosTabela.php'
             ?>
@@ -19,5 +19,5 @@
     </table>
     
     <a href="incluir.php"><button class="inserir">Incluir Tarefa</button></a>
-    
+    <script src="reflesh.js"></script>
 <?php include 'footer.php'?>

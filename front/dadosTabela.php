@@ -19,8 +19,8 @@
 
             echo "<td>" . date("d/m/Y", strtotime($row['DATA_LIMITE'])) . "</td>";
             echo "<td>
-                <a href='editar.php?id=" . $row['ID'] . "'><button class='editar'>Editar</button></a>
-                <a href='excluir.php?id=" . $row['ID'] . "'><button class='excluir'>Excluir</button></a>
+                <a href='/back/editar.php?id=" . $row['ID'] . "'><button class='editar'>Editar</button></a>
+                <a href='/back/excluir.php?id=" . $row['ID'] . "'><button class='excluir'>Excluir</button></a>
               </td>";
             echo "</tr>";
         }
