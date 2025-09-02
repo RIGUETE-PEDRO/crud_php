@@ -17,7 +17,7 @@ include 'header.php';
     </p>
 <?php endif; ?>
 
-<h1>Incluir Nova Tarefa</h1>
+<h1 class="title-inclusao">Incluir Nova Tarefa</h1>
 
 <form method="POST" action="../back/salvar.php">
     <label>Nome da Tarefa:</label>
@@ -27,11 +27,13 @@ include 'header.php';
     <input type="number" step="0.01" name="custo" required value="<?php echo htmlspecialchars($valores['custo']); ?>"><br><br>
 
     <label>Data Limite:</label>
-    <input type="date" name="data_limite" required value="<?php echo htmlspecialchars($valores['data_limite']); ?>"><br><br>
+    <input type="date"  name="data_limite" required value="<?php echo htmlspecialchars($valores['data_limite']); ?>"><br><br>
 
     <button type="submit">Salvar</button>
+
+    <button type="button" onclick="window.location.href='index.php'" class="voltar">Voltar</button>
 </form>
 
-<a href="index.php">Voltar</a>
+
 
 <?php include 'footer.php'; ?>
