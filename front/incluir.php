@@ -11,11 +11,7 @@ unset($_SESSION['status'], $_SESSION['valores']);
 include 'header.php'; 
 ?>
 
-<?php if ($status): ?>
-    <p style="color: <?php echo strpos($status, 'sucesso') !== false ? 'green' : 'red'; ?>;">
-        <?php echo htmlspecialchars($status); ?>
-    </p>
-<?php endif; ?>
+
 
 <h1 class="title-inclusao">Incluir Nova Tarefa</h1>
 
@@ -28,6 +24,12 @@ include 'header.php';
 
     <label>Data Limite:</label>
     <input type="date"  name="data_limite" required value="<?php echo htmlspecialchars($valores['data_limite']); ?>"><br><br>
+
+    <?php if ($status): ?>
+    <p style="color: <?php echo strpos($status, 'sucesso') !== false ? 'green' : 'red'; ?>;" style='text-align: center;'>
+        <?php echo htmlspecialchars($status); ?>
+    </p>
+<?php endif; ?>
 
     <button type="submit">Salvar</button>
 

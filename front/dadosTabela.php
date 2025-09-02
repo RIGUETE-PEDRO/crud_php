@@ -2,26 +2,47 @@
     <?php
     include '../back/PropertiesConf.php';
 
+
     $sql = "SELECT * FROM TAREFAS ORDER BY ORDEM";
     $result = $conn->query($sql);
+    $tarefas = $result->fetch_all(MYSQLI_ASSOC);
+    $total_tarefas = count($tarefas);
 
-    if ($result->num_rows > 0) {
-        while ($row = $result->fetch_assoc()) {
+    if ($total_tarefas > 0) {
+     
+        foreach ($tarefas as $index => $row) {
+            $id = $row['ID'];
+            $classe_custo = ($row['CUSTO'] > 999) ? "custo-alto" : "custo-baixo";
 
-            // Define a classe da linha inteira com base no custo
-            $classe = ($row['CUSTO'] > 999) ? "custo-alto" : "custo-baixo";
-
-            echo "<tr class='$classe'>";
-            echo "<td>" . htmlspecialchars($row['NOME']) . "</td>";
-            echo "<td>" . number_format($row['CUSTO'], 2, ',', '.') . "</td>";
-            echo "<td>" . date("d/m/Y", strtotime($row['DATA_LIMITE'])) . "</td>";
-            echo "<td>
-                    <a href='/back/prioridade.php?id=" . $row['ID'] . "&acao=down'><img src='img/seta.svg' class='seta-down acoes'></a>
-                    <a href='/back/prioridade.php?id=" . $row['ID'] . "&acao=up'><img src='img/seta.svg' class='seta-up acoes'></a>
-                    <a href='/back/editar.php?id=" . $row['ID'] . "'><img src='img/edit.svg' class='editar acoes' ></a>
-                    <a href='#' class='excluir acoes' onclick='abrirConfirmacaoExclusao(" . $row['ID'] . ")'><img src='img/delete.svg'></a>
-                    
-                  </td>";
+            echo "<tr id='linha-{$id}' class='{$classe_custo}' data-id='{$id}'>";
+            
+          
+            echo "<td><span class='texto texto-nome'>".htmlspecialchars($row['NOME'])."</span><input type='text' class='campo-edicao' value='".htmlspecialchars($row['NOME'])."' style='display:none;'></td>";
+            echo "<td><span class='texto texto-custo'>".number_format($row['CUSTO'], 2, ',', '.')."</span><input type='number' step='0.01' class='campo-edicao' value='".$row['CUSTO']."' style='display:none;'></td>";
+            echo "<td><span class='texto texto-data'>".date("d/m/Y", strtotime($row['DATA_LIMITE']))."</span><input type='date' class='campo-edicao' value='".$row['DATA_LIMITE']."' style='display:none;'></td>";
+            
+            echo "<td class='acoes'>";
+          
+            
+            if ($index < $total_tarefas - 1) {
+                echo "<a href='/back/prioridade.php?id={$id}&acao=down'><img src='img/seta.svg' class='seta-down acoes-icone' style='margin-left: 50px;'></a>";
+            }else{
+                echo "<span style='display:inline-block; width:32px; margin-left: 50px;'></span>";
+            }
+        
+            if ($index > 0) {
+                echo "<a href='/back/prioridade.php?id={$id}&acao=up'><img src='img/seta.svg' class='seta-up acoes-icone' style='margin-right: 50px;'></a>";
+            }else{
+                echo "<span style='display:inline-block; width:32px; margin-right: 50px;'></span>";
+            }
+            
+         
+            echo "<img src='img/edit.svg' class='acoes-icone icone-editar' onclick='alternarEdicao({$id})'>";
+            echo "<img src='img/save.svg' class='acoes-icone icone-salvar' onclick='salvarEdicao({$id})' style='display:none;'>";
+            echo "<img src='img/close.svg' class='acoes-icone icone-cancelar' onclick='alternarEdicao({$id})' style='display:none;'>";
+            echo "<a href='#' onclick='abrirConfirmacaoExclusao({$id})'><img src='img/delete.svg' class='acoes-icone'></a>";
+           
+            echo "</td>";
             echo "</tr>";
         }
     } else {

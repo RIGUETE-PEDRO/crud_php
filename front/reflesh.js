@@ -1,9 +1,12 @@
 function atualizarTabela() {
+   
     fetch('dadosTabela.php')
     .then(res => res.text())
     .then(html => {
-        document.getElementById('tabela-tarefas').innerHTML = html;
+  
+        const tbody = document.getElementById('tabela-tarefas-body');
+        if (tbody) {
+            tbody.innerHTML = html;
+        }
     });
 }
-
-setInterval(atualizarTabela, 1000);

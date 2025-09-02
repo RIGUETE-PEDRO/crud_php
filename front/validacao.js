@@ -20,7 +20,7 @@ cancelBtn.addEventListener('click', () => {
 
 
 confirmBtn.addEventListener('click', () => {
-s
+
     const id = confirmBtn.getAttribute('data-id');
     
     

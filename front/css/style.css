@@ -148,7 +148,7 @@
   height: 50px;
 }
 
-.seta-down{
+.seta-up{
     cursor: pointer;
     transform: rotate(180deg);
 }
@@ -231,4 +231,13 @@ form button:active {
 
 .voltar:hover{
     background-color: #a80000 !important;
+}
+
+.acoes-icone {
+    margin: 10px 10px 10px 10px;
+}
+
+.coluns{
+    width: 300px;
+    height: auto;
 }
