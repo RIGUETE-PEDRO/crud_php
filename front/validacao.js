@@ -1,5 +1,5 @@
 
-// Pega os elementos do pop-up
+
 const popup = document.getElementById('confirm-popup-overlay');
 const confirmBtn = document.getElementById('confirm-delete-btn');
 const cancelBtn = document.getElementById('cancel-delete-btn');
