@@ -41,7 +41,13 @@ function salvarEdicao(id) {
             linha.querySelector('.texto-custo').textContent = custoFormatado.replace('R$', '').trim();
             let [ano, mes, dia] = dadosParaSalvar.data_limite.split('-');
             linha.querySelector('.texto-data').textContent = `${dia}/${mes}/${ano}`;
-            
+             if (parseFloat(dadosParaSalvar.custo) > 1000) {
+                linha.classList.add('custo-alto');
+                linha.classList.remove('custo-baixo'); // remove a classe oposta
+            } else {
+                linha.classList.remove('custo-alto');
+                linha.classList.add('custo-baixo'); // garante que custos baixos tenham a classe correta
+            }
             
             alternarEdicao(id);
         } else {
